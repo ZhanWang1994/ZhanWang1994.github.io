@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="JAVA通过命令行调用ffmpeg处理视频文件，需要先自行安装ffmpeg代码示例：   1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556public static void excute(List&lt;String&gt; command">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ffmpeg操作视频文件">
+<meta property="og:url" content="http://example.com/2022/01/08/ffmpeg%E6%93%8D%E4%BD%9C%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="JAVA通过命令行调用ffmpeg处理视频文件，需要先自行安装ffmpeg代码示例：   1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556public static void excute(List&lt;String&gt; command">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="data:image/png;base64,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">
+<meta property="og:image" content="http://zhan1994.xyz/blog/ffmpeg%E6%93%8D%E4%BD%9C%E8%A7%86%E9%A2%91.png">
+<meta property="article:published_time" content="2022-01-07T18:23:45.000Z">
+<meta property="article:modified_time" content="2022-02-25T18:46:25.027Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="FFMPEG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/png;base64,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">
+
+
+<link rel="canonical" href="http://example.com/2022/01/08/ffmpeg%E6%93%8D%E4%BD%9C%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/01/08/ffmpeg%E6%93%8D%E4%BD%9C%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/","path":"2022/01/08/ffmpeg操作视频文件/","title":"ffmpeg操作视频文件"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ffmpeg操作视频文件 | Hexo</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/08/ffmpeg%E6%93%8D%E4%BD%9C%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ffmpeg操作视频文件
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-01-08 02:23:45" itemprop="dateCreated datePublished" datetime="2022-01-08T02:23:45+08:00">2022-01-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-02-26 02:46:25" itemprop="dateModified" datetime="2022-02-26T02:46:25+08:00">2022-02-26</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>JAVA通过命令行调用ffmpeg处理视频文件，需要先自行安装ffmpeg<br>代码示例：</p>
+<p><img src="data:image/png;base64,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" alt="avatar"></p>
+<p><img src="http://zhan1994.xyz/blog/ffmpeg%E6%93%8D%E4%BD%9C%E8%A7%86%E9%A2%91.png" alt="avatar"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">excute</span><span class="params">(List&lt;String&gt; command)</span></span>&#123;</span><br><span class="line">String str = <span class="keyword">null</span>;</span><br><span class="line">BufferedReader buf = <span class="keyword">null</span>;</span><br><span class="line">InputStreamReader in = <span class="keyword">null</span>;</span><br><span class="line">Process p = <span class="keyword">null</span>;</span><br><span class="line">String line = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">ProcessBuilder builder = <span class="keyword">new</span> ProcessBuilder();</span><br><span class="line">builder.command(command);</span><br><span class="line">builder.redirectErrorStream(<span class="keyword">true</span>);</span><br><span class="line">p = builder.start();</span><br><span class="line">in = <span class="keyword">new</span> InputStreamReader(p.getInputStream());</span><br><span class="line">buf = <span class="keyword">new</span> BufferedReader(in);</span><br><span class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line"><span class="keyword">while</span> ((line = buf.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">sb.append(line);</span><br><span class="line"><span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> ret = p.waitFor();<span class="comment">// 这里线程阻塞，将等待外部转换进程运行成功运行结束后，才往下执行</span></span><br><span class="line">buf.close();</span><br><span class="line">in.close();</span><br><span class="line">str = sb.toString();</span><br><span class="line">String newStr = str.replace(<span class="string">&quot;(\\[[^\\]]*\\])&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">String dsrcl = newStr;</span><br><span class="line"><span class="keyword">while</span> (dsrcl.contains(<span class="string">&quot;(&quot;</span>)) &#123;</span><br><span class="line">dsrcl = dsrcl.replaceAll(<span class="string">&quot;\\([^)(]*\\)&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">str = dsrcl;</span><br><span class="line"><span class="keyword">while</span> (str.indexOf(<span class="string">&quot;(&quot;</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">String strTemp = str.substring(str.indexOf(<span class="string">&#x27;(&#x27;</span>), str.indexOf(<span class="string">&#x27;)&#x27;</span>) + <span class="number">1</span>);</span><br><span class="line">str = str.replace(strTemp, <span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> (str.indexOf(<span class="string">&quot;[&quot;</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">String strTemp = str.substring(str.indexOf(<span class="string">&#x27;[&#x27;</span>), str.indexOf(<span class="string">&#x27;]&#x27;</span>) + <span class="number">1</span>);</span><br><span class="line">str = str.replace(strTemp, <span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">log.error(<span class="string">&quot;process:&quot;</span>,e.getMessage());</span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"><span class="keyword">if</span>(buf != <span class="keyword">null</span>)&#123;</span><br><span class="line">buf.close();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(in != <span class="keyword">null</span>)&#123;</span><br><span class="line">in.close();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(p != <span class="keyword">null</span>)&#123;</span><br><span class="line">p.destroy();</span><br><span class="line">&#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">log.error(<span class="string">&quot;process流关闭失败了：&quot;</span>,e.getMessage());</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码等同于  ffmpeg -i input.mp4 output.flv<br>1.视频码率调整<br>ffmpeg -i input.avi -b:v 1500k output.avi<br>2.视频格式调整<br>ffmpeg -i input.avi  output.mp4<br>3.视频尺寸调整<br>ffmpeg -i input.mpg -s 320x240 output.mp4<br>ffmpeg -i input.mpg -vf scale=320:240 output.mp4<br>1）等比例缩放<br>ffmpeg -i input.mpg -vf scale=iw<em>05:ih</em>0.5 output.mp4(等比例缩小到50%)<br>2）加黑边（宽高比不符合）<br>ffmpeg -i src.avi -vf pad=640:480:0:40:black -y test_pad.avi<br>若源视屏尺寸为1280<em>800  目标尺寸为640</em>480<br>那么先等比例缩放640<em>400     黑边宽度为（480-400）/2=40<br>black标识黑边  可以不写，默认为黑色<br>4.视频部分替换成图片<br>1)把图片转成视频<br>ffmpeg -r 25 -loop 1 -i  G://ffmpeg-demo/test.jpg -pix_fmt yuv420p -vcodec libx264 -b:v 600k -r:v 25 -preset medium -crf 30 -s 1280</em>720 -vframes 250 -r 25 -t 3 G://ffmpeg-demo/test.mp4</p>
+<p>ffmpeg -r 25 -loop 1 -i  G://ffmpeg-demo/test.jpg -pix_fmt yuv420p -vcodec libx264 -b:v 600k -r:v 25 -preset medium -crf 30 -s 1280*720 -vframes 250 -r 25 -t 3 G://ffmpeg-demo/图片转视频.mp4<br>2)转化图片视频以及截取源视频，准备合并<br>ffmpeg  -i test.mp4 -c copy -bsf:v h264_mp4toannexb -f mpegts 1.ts<br>ffmpeg -ss 00:00:00 -t 12 -i 源视频.mp4 -c copy -bsf:v h264_mp4toannexb -f mpegts 2.ts<br>3）合并视频<br>ffmpeg -i “concat:2.ts|1.ts” -c copy -bsf:a aac_adtstoasc -movflags +faststart 合并.mp4</p>
+<p>ffmpeg –i G://ffmpeg-demo/源视频.mp4 -acodec copy-vcodec copy -vf “movie=G://ffmpeg-demo/底部.jpg[watermark];[in][watermark]overlay=10:10:1[out]” G://ffmpeg-demo/加完水印.mp4</p>
+<p>ffmpeg -y -i 源视频.mp4 -vf “movie=左上.jpg []; [in][logo] overlay=1:1 [out]” output.mp4</p>
+<p>ffmpeg -y -i 源视频.mp4  -i 左上.jpg  -i 底部.jpg -filter_complex “[1:v]scale=100:100[img1];[2:v]scale=720:100[img2];[0:v][img1]overlay=0:0[bkg];[bkg][img2]overlay=0:400” output2.mp4</p>
+<p>ffmpeg   -i 源视频.mp4  -i 左上.jpg  -i 底部.jpg  -loop 1 -t 4.5 -i 片尾.jpg -filter_complex “ [1:v]scale=100:100[img1];[2:v]scale=720:100[img2];[0:v][img1]overlay=0:0[bkg];[bkg][img2]overlay=0:400[bkg];[bkg][3:v]scale=w=480:h=360[out_5];[out_4][out_5]concat “ -acodec copy -vcodec libx264 -b:v 500k -threads 4 -thread_type frame -preset faster -tune zerolatency -y test.mp4</p>
+<p>5.令生成的MP4视频允许边下边放<br>教程：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhoubotong2012/article/details/79346363">https://blog.csdn.net/zhoubotong2012/article/details/79346363</a><br>原因： 网页播放器的videoview 需要读到视频的meta信息 才允许播放视频<br>需要使用工具将meta信息移动到视频头部</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FFMPEG/" rel="tag"># FFMPEG</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/23/SpringBoot%E5%BA%94%E7%94%A8%E7%9A%84%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5/" rel="prev" title="SpringBoot的健康检查">
+                  <i class="fa fa-chevron-left"></i> SpringBoot的健康检查
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/01/14/ffmpeg%E9%87%87%E7%94%A8GPU%E5%8A%A0%E9%80%9F/" rel="next" title="ffmpeg采用GPU加速">
+                  ffmpeg采用GPU加速 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
